@@ -1,8 +1,10 @@
-//import org.example.WordCount;
 import org.junit.jupiter.api.Test;
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,6 +21,25 @@ class MainTest {
         expected.put("project", 1);
         Map<String, Integer> actual = WordCount.getWordFrequency(document);
         assertEquals(expected, actual);
+    }
+    @Test
+    public void testGetLineCount() {
+        String document = "I am doing software engineering\nThis is another line";
+        int expected = 2;
+
+        int result = WordCount.getLineCount(document);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetCharCount() {
+        String document = "I am doing software engineering";
+        int expected = 31;
+
+        int result = WordCount.getCharCount(document);
+
+        assertEquals(expected, result);
     }
     @Test
     void emptyStringTestCase() {
@@ -115,6 +136,8 @@ class MainTest {
 
         assertEquals(expectedCounts, actualCounts);
     }
+   
+
     @Test
     void MultipleSpace() {
         String sentence = "the quick    brown fox  jumps over the   lazy dog";
@@ -142,5 +165,4 @@ class MainTest {
 
         assertEquals(expectedCounts, actualCounts);
     }
-    }
-
+}
